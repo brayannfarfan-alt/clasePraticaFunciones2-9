@@ -105,42 +105,15 @@ def eliminar_producto():
     print("Producto no encontrado.")
 
 
-def buscar_por_precio():
-    print("\n===== BUSCAR POR PRECIO =====")
+def buscar_por_precio(productos, precio_maximo):
+    
+    encontrados = []
 
-    if not productos:
-        print("No hay productos registrados.")
-        return
+    for producto in productos:
+        if producto["precio"] <= precio_maximo:
+            encontrados.append(producto)
 
-    try:
-        precio_maximo = float(
-            input("Mostrar productos hasta un precio de: ")
-        )
-
-        if precio_maximo < 0:
-            print("El precio no puede ser negativo.")
-            return
-
-        encontrados = []
-
-        for producto in productos:
-            if producto["precio"] <= precio_maximo:
-                encontrados.append(producto)
-
-        if not encontrados:
-            print("No se encontraron productos.")
-            return
-
-        print("\nProductos encontrados:")
-
-        for producto in encontrados:
-            print(
-                f"- {producto['nombre']} "
-                f"| ${producto['precio']:.2f}"
-            )
-
-    except ValueError:
-        print("Error: debes ingresar un precio válido.")
+    return encontrados
 
 
 def mostrar_estadisticas():
