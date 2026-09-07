@@ -1,11 +1,10 @@
 from productos import (
     agregar_producto,
-    #mostrar_productos,
-    # buscar_por_precio,
-    # buscar_producto,
-    # eliminar_producto,
-    # mostrar_estadisticas,
-    # mostrar_producto
+    mostrar_productos,
+    buscar_por_precio,
+    buscar_producto,
+    eliminar_producto,
+    mostrar_estadisticas
 )
 from menu import mostrar_menu
 
@@ -25,9 +24,21 @@ def index():
         match op :
             case "1": 
                 agregar_producto()
-
-
-
+            case "2":
+                mostrar_productos()
+            case "3":
+                buscar_producto()
+            case "4":
+                eliminar_producto()
+            case "5":
+                buscar_por_precio()
+            case "6":
+                mostrar_estadisticas()
+            case "7":
+                print("\nPrograma finalizado.")
+                break
+            case _ :
+                print("\nOpción inválida.")
 
 
 

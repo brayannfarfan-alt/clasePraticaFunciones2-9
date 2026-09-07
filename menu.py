@@ -9,8 +9,8 @@ def mostrar_menu():
 2.Mostrar producto
 3.Buscar producto
 4.Eliminar producto
-5.Buscar producto
-6.Mostrar producto por precio
+5.Buscar producto por precio
+6.Mostrar Estadísticas
 7.Salir
 =================================
 """)
