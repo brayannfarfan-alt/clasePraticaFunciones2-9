@@ -2,7 +2,6 @@
 
 productos = []
 
-
 def agregar_producto():
 
     print("\n===== AGREGAR PRODUCTO =====")
