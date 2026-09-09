@@ -9,7 +9,6 @@ def limpiar_productos():
     yield # => se ejecuta los test de prueba
     productos.productos.clear()
 
-
 @pytest.fixture
 def datos_base():
     productos.productos.extend([
@@ -22,15 +21,15 @@ def datos_base():
 
 
 
-# def test_agregar_producto_exito( monkeypatch ):
+def test_agregar_producto_exito( monkeypatch ):
 
-#     entrada = iter(["Mouse","1500","3"]) # usuario, tester
+    entrada = iter(["Mouse","1500","3"]) # usuario, tester
 
-#     monkeypatch.setattr("builtins.input",lambda _: next(entrada))
+    monkeypatch.setattr("builtins.input",lambda _: next(entrada))
 
-#     productos.agregar_producto()
+    productos.agregar_producto()
 
-#     assert len(productos.productos) > 0
+    assert len(productos.productos) > 0
 
 
 def test_buscar_productos_existentes( datos_base ):
@@ -38,3 +37,22 @@ def test_buscar_productos_existentes( datos_base ):
     resultado = productos.buscar_por_precio( datos_base, precio_maximo=4000)
 
     assert len(resultado) == 2
+
+def test_agregar_producto_precio_negativo( monkeypatch):
+    entrada = iter(["Mouse","-1500","3"])
+    monkeypatch.setattr("builtins.input",lambda _: next(entrada))
+
+    productos.agregar_producto()
+
+    assert len(productos.productos) == 0
+
+
+def test_eliminar_producto( monkeypatch, datos_base ):
+
+    monkeypatch.setattr("builtins.input",lambda _: "Mouse")
+
+    productos.eliminar_producto()
+
+    
+    assert len(productos.productos) == 2
+    assert productos.productos[0]["nombre"] == "Teclado"
